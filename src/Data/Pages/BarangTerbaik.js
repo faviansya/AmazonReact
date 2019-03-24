@@ -33,6 +33,7 @@ class BarangTerbaik extends Component {
       .catch(function(error) {
         console.log(error);
       });
+      
   };
 
   render() {

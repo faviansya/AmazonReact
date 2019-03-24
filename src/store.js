@@ -39,12 +39,14 @@ const initialState = {
   category: "",
   categoryItem: [],
   CartID: "",
-
+  newTransaction:[],
+  newTransactionCount:0,
 };
 
 export const store = createStore(initialState);
 export const actions = store => ({
   postLogout: state => {
+    store.setState({ newTransactionCount: 0 });
     store.setState({ is_login: false });
     store.setState({ Bearer: "" });
     store.setState({ nama: "" });
@@ -81,6 +83,9 @@ export const actions = store => ({
   },
   ChangeUserId: (state, id) => {
     store.setState({ userID: id });
+  },
+  changenewTransactionCount: (state, id) => {
+    store.setState({ newTransactionCount: (store.getState().newTransactionCount -1) });
   },
   ChangeMyitem: async (state) => {
     const GetItemsData = {
@@ -184,6 +189,29 @@ export const actions = store => ({
       .catch(function(error) {
         console.log(error);
       });
+
+      const GetNewTransaction = {
+        method: "get",
+        url: Host + "/api/transaction/seller",
+        headers: {
+          Authorization: "Bearer " + store.getState().Bearer,
+        }
+      };
+      await axios(GetNewTransaction)
+        .then(function(response) {
+          store.setState({ newTransaction: response.data.Data });
+          // newTransactionCount
+          {store.getState().newTransaction.map((item, key) => {
+            if(item.deliver == "undeliver"){
+              store.setState({ newTransactionCount: (store.getState().newTransactionCount + 1) });
+          }
+          })};
+          console.log(store.getState().newTransactionCount);
+
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
   },
   GetDetails: async state => {
     const req = {

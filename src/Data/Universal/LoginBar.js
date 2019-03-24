@@ -99,7 +99,8 @@ class Header extends Component {
                     />
                   </div>
                   <div class="text-wrap text-dark">
-                    Hello <br />
+                    <span class="badge badge-secondary"> {this.props.newTransactionCount} New Transaksi</span>
+                    <br />
                     {this.props.nama} <i class="fa fa-heart" />
                   </div>
                 </div>
@@ -123,15 +124,20 @@ class Header extends Component {
                     </div>
                     <div class="form-group">
                       <Link to="/edituser">
-                        <button type="button" class="btn btn-success w-100">
+                        <button type="button" class="btn btn-success w-50">
                           Edit Profile
+                        </button>
+                      </Link>
+                      <Link to="/sellerlog">
+                        <button type="submit" class="btn btn-info ml-2 mt-2">
+                        Penjualan <span class="badge badge-light">{this.props.newTransactionCount} Transaksi Baru</span>
                         </button>
                       </Link>
                     </div>
                     <div class="form-group">
                     <Link to="/logtransaksi">
                         <button type="submit" class="btn btn-info mr-2">
-                          Log Transaksi
+                          Log Beli
                         </button>
                       </Link>
                       <button
@@ -173,6 +179,6 @@ class Header extends Component {
 }
 
 export default connect(
-  "nama,level,is_login,ownerUsername,imagesource",
+  "nama,level,is_login,ownerUsername,imagesource,newTransactionCount",
   actions
 )(withRouter(Header));

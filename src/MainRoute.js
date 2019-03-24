@@ -16,6 +16,7 @@ import PutUser from "./Data/Post/EditUser";
 
 import Traksaksi from "./Data/Pages/Transaksi";
 import LogTraksaksi from "./Data/Pages/LogTransaksi";
+import LogSeller from "./Data/Pages/SellerLogger";
 
 import PatNolPat from "./Data/Components/404";
 
@@ -26,6 +27,7 @@ import StaticPertanyaanUmum from "./Data/StaticPage/PertanyaanUmum";
 import StaticMasalahPelapak from "./Data/StaticPage/MasalahPelapak";
 import StaticMasalahPenjualan from "./Data/StaticPage/MasalahPenjualan";
 import Contacts from "./Data/StaticPage/Contacts";
+import SellerLogger from './Data/Pages/SellerLogger';
 
 const MainRoute = () => {
     return(
@@ -48,6 +50,7 @@ const MainRoute = () => {
             {/* Transaction */}
             <Route exact path = "/transaksi" component = {Traksaksi}/>
             <Route exact path = "/logtransaksi" component = {LogTraksaksi}/>
+            <Route exact path = "/sellerlog" component = {LogSeller}/>
             {/* Static Page */}
             <Route exact path = "/pembayaranAtm" component = {StaticPembayaranAtm}/>
             <Route exact path = "/pembayaranIndomaret" component = {StaticPembayaranIndomaret}/>
