@@ -52,7 +52,7 @@ class AllItem extends Component {
       .then(function(response) {
         const Req = {
           method: "get",
-          url: Host+"/proxy/user/api/cart",
+          url: Host+"/user/api/cart",
           headers: {
             Authorization: "Bearer " + self.props.Bearer
           }
