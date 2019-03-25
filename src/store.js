@@ -134,6 +134,9 @@ export const actions = store => ({
     const req = {
       method: "post",
       url: Host+ "/api/login",
+      headers: {
+        "Content-Type":"application/json",
+      },
       params: {
         username: username,
         password: password
@@ -142,10 +145,10 @@ export const actions = store => ({
     await axios(req)
       .then(function(response) {
         store.setState({ Bearer: response.data.token });
-        // console.log("MASOK TOKEN", response);
+        console.log("MASOK TOKEN", response);
       })
       .catch(function(error) {
-        console.log("ASEM", error);
+        console.log("ASEM1", error);
       });
 
     //Get User Data
@@ -153,7 +156,8 @@ export const actions = store => ({
       method: "get",
       url: Host+ "/user/api/me",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer
+        Authorization: "Bearer " + store.getState().Bearer,
+        "Content-Type":"application/json",
       }
     };
     await axios(getUserData)
@@ -169,7 +173,7 @@ export const actions = store => ({
         store.setState({ ownerUsername: response.data.username });
         store.setState({ myTransaction: response.data.transaction });      
 
-        // console.log("MASOK TOKEN", store.getState().Bearer);
+         console.log("MASOK TOKEN222", store.getState().Bearer);
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -179,6 +183,7 @@ export const actions = store => ({
       method: "get",
       url: Host+ "/user/api/item/myitems",
       headers: {
+        "Content-Type":"application/json",
         Authorization: "Bearer " + store.getState().Bearer
       }
     };
@@ -194,6 +199,7 @@ export const actions = store => ({
         method: "get",
         url: Host + "/api/transaction/seller",
         headers: {
+          "Content-Type":"application/json",
           Authorization: "Bearer " + store.getState().Bearer,
         }
       };

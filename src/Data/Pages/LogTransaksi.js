@@ -86,8 +86,31 @@ class Item extends Component {
                   <div class="col-2">{item.qty}</div>
                   <div class="col-2">{item.status}</div>
                   <div class="col-2" style={{backgroundColor: style.BackgroundColor, color:style.font}}>{item.deliver}</div>
-                  <hr />
+                  
+                  <div class="container mt-2">
+                 <div class="row">
+                  <div class="col-2">ITEM:</div>
+                  <div class="col-2">Nama:{item.item_name}</div>
+                  <div class="col-2">Harga{item.item_harga}</div>
+                  <div class="col-2"><img class="d-block h-100 w-100" src={item.item_gambar} /></div>
+                  <div class="col-2"></div>
+                  <div class="col-2"></div>
+                  </div>
+                  </div>
+
+                  <div class="container mt-2">
+                 <div class="row">
+                  <div class="col-2">USER:</div>
+                  <div class="col-2">Nama:{item.owner_name}</div>
+                  <div class="col-2">Alamat:{item.owner_alamat}</div>
+                  <div class="col-2"><img class="d-block h-100 w-100" src={item.owner_gambar} /></div>
+                  <div class="col-2"></div>
+                  <div class="col-2"></div>
+                  </div>
+                  </div>
+
                 </div>
+                <hr />
               </div>
             </center>
           );

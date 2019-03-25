@@ -31,7 +31,7 @@ class Item extends Component {
         console.log(error);
       });
   };
-  ConfirmTransaction = async (ID,Deliver) => {
+  ConfirmTransaction = async (ID, Deliver) => {
     const self = this;
     const id = ID;
     const deliver = Deliver;
@@ -57,10 +57,10 @@ class Item extends Component {
         await axios(req)
           .then(function(response) {
             self.setState({ LogSeller: response.data.Data });
-            if(deliver == "undeliver"){
+            if (deliver == "undeliver") {
               self.props.changenewTransactionCount();
             }
-            console.log("Response",id);
+            console.log("Response", id);
           })
           .catch(function(error) {
             console.log(error);
@@ -123,17 +123,42 @@ class Item extends Component {
                   <div class="col-2">{item.qty}</div>
                   <div class="col-2">{item.status}</div>
                   <div class="col-2">{item.deliver}</div>
-                  <button
-                    type="button"
-                    class={style.button}
-                    onClick={() => {
-                      this.ConfirmTransaction(item.id,item.deliver);
-                    }}
-                  >
-                    Confirm
-                  </button>
+                    <button
+                      type="button"
+                      class={style.button}
+                      onClick={() => {
+                        this.ConfirmTransaction(item.id, item.deliver);
+                      }}
+                    >
+                      Confirm
+                    </button>
                   <hr />
+                  <div class="container">
+                  <div class="row mt-2">
+
+                  <div class="col-2">ITEM:</div>
+                  <div class="col-2">Nama:{item.item_name}</div>
+                  <div class="col-2">Harga:{item.item_harga}</div>
+                  <div class="col-2"><img class="d-block h-100 w-100" src={item.item_gambar} /></div>
+                  <div class="col-2"></div>
+                  <div class="col-2"></div>
+                  </div>
+                  </div>
+                  <div class="container">
+                  <div class="row mt-2">
+
+                  <div class="col-2">USER:</div>
+                  <div class="col-2">Nama:{item.user_name}</div>
+                  <div class="col-2">Alamat:{item.user_alamat}</div>
+                  <div class="col-2"><img class="d-block h-100 w-100" src={item.user_gambar} /></div>
+                  <div class="col-2"></div>
+                  <div class="col-2"></div>
+                  </div>
+                  </div>
+
                 </div>
+                <hr />
+
               </div>
             </center>
           );

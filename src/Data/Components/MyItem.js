@@ -8,7 +8,6 @@ import { withRouter } from "react-router-dom";
 class MyItem extends Component {
   changeItemId = () => {
     this.props.ChangeItemId(this.props.id);
-    console.log("CHANGE ITEM ID")
   };
   deleteItem = id => {
     this.props.DeletedItem(id);
